@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('installments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('credit_id')->constrained('credits');
+            $table->foreignId('credit_id')->constrained('credits')->onDelete('cascade');
             $table->integer('number_of_installments');
             $table->decimal('amount_of_installments', 10, 2);
-            $table->date('duet_date');
+            $table->date('due_date');
             $table->boolean('defaulter');
-            $table->decimal('delinquency_amount');
+            $table->decimal('delinquency_amount', 8, 2)->default(0);
             $table->timestamps();
         });
     }

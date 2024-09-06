@@ -9,11 +9,17 @@ class Installments extends Model
 {
     use HasFactory;
 
+    protected $table = 'installments';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
         'credit_id',
         'number_of_installments',
-        'duet_date',
+        'due_date',
+        'amount_of_installments',
         'state',
+        'defaulter',
+        'delinquency_amount',
     ];
 
     public function credit() {
